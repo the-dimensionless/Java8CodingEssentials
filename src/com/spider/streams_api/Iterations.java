@@ -27,7 +27,8 @@ public class Iterations {
         IntStream.range(0, list.size()).forEach(index -> System.out.println(list.get(index).toString()));
 
         // IntStream iterate(seed, deltaFn)
-        IntStream.iterate(5, operand -> operand * 2)
+        IntStream.iterate(5, operand -> operand + 1)
+                .filter(number -> number % 2 == 0) // filter function to get even values
                 .limit(20) // only 20 occurrences
                 .forEach(System.out::println);
 
