@@ -7,8 +7,8 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class Mapping {
-    final static Function<CustomerEntity, CustomerDTO> customerEntityCustomerDTOFunction = person -> new CustomerDTO(person.getFirstName(),
-            person.getNationality(), person.isPrimeMember());
+//    final static Function<CustomerEntity, CustomerDTO> customerEntityCustomerDTOFunction = person -> new CustomerDTO(person.getFirstName(),
+//            person.getNationality(), person.isPrimeMember());
 
     public static void main(String[] args) {
         // Transform from one dataType to another using .map()
@@ -19,7 +19,7 @@ public class Mapping {
                 , "Ranchi, Jharkhand", false));
 
         List<CustomerDTO> listOfDTOs = list.stream()
-                .map(customerEntityCustomerDTOFunction)
+                .map(CustomerDTO::map)
                 .collect(Collectors.toList());
         listOfDTOs.forEach(System.out::println);
     }
@@ -121,5 +121,9 @@ class CustomerDTO {
                 ", Nationality='" + Nationality + '\'' +
                 ", isPrimeMember=" + isPrimeMember +
                 '}';
+    }
+
+    public static CustomerDTO map(CustomerEntity person) {
+        return new CustomerDTO(person.getFirstName(), person.getNationality(), person.isPrimeMember());
     }
 }
