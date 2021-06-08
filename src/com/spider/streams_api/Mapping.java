@@ -22,6 +22,15 @@ public class Mapping {
                 .map(CustomerDTO::map)
                 .collect(Collectors.toList());
         listOfDTOs.forEach(System.out::println);
+
+        // calculating averages using mapToDouble
+        String input[] = {"200.0", "300.50", "550.1"};
+        double average = Arrays.stream(input)
+                                .mapToDouble(Double :: valueOf)
+                                .average()
+                                .orElse(0);
+        System.out.println("Average is " + average);
+
     }
 }
 
