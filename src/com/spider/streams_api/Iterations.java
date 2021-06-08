@@ -18,13 +18,18 @@ public class Iterations {
     public static void main(String[] args) {
 
         // imperative -> For loop from 0 to 9
-        // functional ->
+        // functional -> IntStream range()
         IntStream.range(0, 10).forEach(index -> System.out.println(index)); // 0-9
         IntStream.rangeClosed(0, 10).forEach(System.out::println); // 0-10
 
-        // IntStream using user defined Class
+        // IntStream range() using user defined Class
         List<Person> list = new Iterations().getDummyList();
         IntStream.range(0, list.size()).forEach(index -> System.out.println(list.get(index).toString()));
+
+        // IntStream iterate(seed, deltaFn)
+        IntStream.iterate(5, operand -> operand * 2)
+                .limit(20) // only 20 occurrences
+                .forEach(System.out::println);
 
     }
 }
