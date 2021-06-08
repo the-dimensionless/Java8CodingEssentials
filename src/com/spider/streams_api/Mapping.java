@@ -3,9 +3,13 @@ package com.spider.streams_api;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class Mapping {
+    final static Function<CustomerEntity, CustomerDTO> customerEntityCustomerDTOFunction = person -> new CustomerDTO(person.getFirstName(),
+            person.getNationality(), person.isPrimeMember());
+
     public static void main(String[] args) {
         // Transform from one dataType to another using .map()
         List<CustomerEntity> list = new ArrayList<CustomerEntity>();
@@ -15,7 +19,7 @@ public class Mapping {
                 , "Ranchi, Jharkhand", false));
 
         List<CustomerDTO> listOfDTOs = list.stream()
-                .map(person -> new CustomerDTO(person.getFirstName(), person.getNationality(), person.isPrimeMember()))
+                .map(customerEntityCustomerDTOFunction)
                 .collect(Collectors.toList());
         listOfDTOs.forEach(System.out::println);
     }
