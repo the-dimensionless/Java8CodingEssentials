@@ -10,3 +10,4 @@
 <br>Some methods that help:
    <br>sum(), collect(Collectors.toList()), average, collect(Collectors.groupingBy())
    
+4. Find First (Deterministic) vs Find Any (Non - deterministic)
