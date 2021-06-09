@@ -11,5 +11,16 @@ public class SimpleStats {
                 .filter(i -> i % 3 == 0 )
                 .count();
         System.out.println("Count of 3 = " + count );
+
+        // Min and max without comparators
+        int max = Arrays.stream(arr)
+                .mapToInt(Integer::valueOf)
+                .max()
+                .getAsInt();
+        int min = Arrays.stream(arr)
+                .mapToInt(Integer::valueOf)
+                .min()
+                .getAsInt();
+        System.out.println(String.format(" Max is %d and Min is %d", max, min));
     }
 }
