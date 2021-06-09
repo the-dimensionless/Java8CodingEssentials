@@ -21,6 +21,21 @@ public class SimpleStats {
                 .mapToInt(Integer::valueOf)
                 .min()
                 .getAsInt();
-        System.out.println(String.format(" Max is %d and Min is %d", max, min));
+        System.out.println(String.format("Max is %d and Min is %d", max, min));
+
+        // average
+        double avg = Arrays.stream(arr)
+                .mapToInt(Integer::intValue)
+                .average()
+                .getAsDouble();
+        System.out.println("Avg is "+ avg);
+
+        // Summation
+        int sum = Arrays.stream(arr)
+                .mapToInt(Integer::intValue)
+                .sum();
+        System.out.println("Summation is " + sum);
+
+        System.out.println("--------Conversely-------");
     }
 }
