@@ -1,6 +1,7 @@
 package com.spider.streams_api;
 
 import java.util.Arrays;
+import java.util.IntSummaryStatistics;
 
 public class SimpleStats {
     public static void main(String[] args) {
@@ -37,5 +38,13 @@ public class SimpleStats {
         System.out.println("Summation is " + sum);
 
         System.out.println("--------Conversely-------");
+
+        IntSummaryStatistics summaryStatistics = Arrays.stream(arr)
+                .mapToInt(Integer::intValue)
+                .summaryStatistics();
+        System.out.println("Simple Statistics summary : " + summaryStatistics);
+        System.out.println(" Avg "+summaryStatistics.getAverage());
+        System.out.println(" Max and min "+summaryStatistics.getMax()+""+summaryStatistics.getMin());
+        System.out.println(" Count and sum "+ summaryStatistics.getCount()+""+summaryStatistics.getSum());
     }
 }
