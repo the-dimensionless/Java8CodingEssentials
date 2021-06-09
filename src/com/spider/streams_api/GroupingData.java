@@ -3,6 +3,7 @@ package com.spider.streams_api;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class GroupingData {
@@ -17,12 +18,22 @@ public class GroupingData {
         list.add(new User("Puzzo", "Italian"));
         list.add(new User("Mario", "Italian"));
 
+        // grouping by country
         Map<String, List<User>> grouping = list.stream()
                 .collect(Collectors.groupingBy(User::getCountry));
         grouping.forEach((country, users) -> {
             System.out.println("------ country ------ " + country);
             users.forEach(i -> System.out.println(i.name));
         });
+
+        // counting and grouping by
+        Map<String, Long> collect = list.stream()
+                .collect(Collectors.groupingBy(User::getCountry, Collectors.counting()));
+        // using bi consumer
+        collect.forEach((country, count) -> {
+            System.out.println(country + " : " + count);
+        });
+
 
     }
 }
