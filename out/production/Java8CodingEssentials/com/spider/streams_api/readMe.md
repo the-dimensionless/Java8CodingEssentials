@@ -11,3 +11,21 @@
    <br>sum(), collect(Collectors.toList()), average, collect(Collectors.groupingBy())
    
 4. Find First (Deterministic) vs Find Any (Non - deterministic)
+
+####Collectors.toList() #Behind the Scenes
+.collect(Collectors.toList())
+
+or conversely
+
+'''
+collect(
+    ArrayList::new, ArrayList::add, ArrayList::addAll
+)
+'''
+Parallel Processing and helpful in combining threads
+
+Concrete Type = Stream -> Initial -> Intermediate Operations -> Terminal Operations
+
+#### Streams are lazy
+#### Highly Optimized
+#### Very Powerful
